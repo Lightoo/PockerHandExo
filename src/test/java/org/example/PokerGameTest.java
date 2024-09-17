@@ -19,13 +19,7 @@ public class PokerGameTest {
     }
     @Test
     void win_the_game_with_HighCard_rule(){
-        Player player1 = playerWithHandOf(PLAYER1,
-                cardOf(Suit.Clubs, Value.FOUR),
-                cardOf(Suit.Diamonds, Value.THREE),
-                cardOf(Suit.Diamonds, Value.TWO),
-                cardOf(Suit.Spades, Value.ACE),
-                cardOf(Suit.Hearts, Value.FIVE)
-        );
+        Player player1 = new Player(PLAYER1, pokerHandHighCard());
         Player player2 = playerWithHandOf(PLAYER2,
                 cardOf(Suit.Clubs, Value.FOUR),
                 cardOf(Suit.Diamonds, Value.THREE),
@@ -33,17 +27,11 @@ public class PokerGameTest {
                 cardOf(Suit.Spades, Value.NINE),
                 cardOf(Suit.Hearts, Value.FIVE)
         );
-        assertEquals("player1 wins. - with high card: Ace", pokerGame.play(player1,player2));
+        assertEquals("player1 wins. - with high card: ACE", pokerGame.play(player1,player2));
     }
     @Test
     void win_the_game_with_FullHouse_rule(){
-        Player player1 = playerWithHandOf(PLAYER1,
-                cardOf(Suit.Hearts, Value.TWO),
-                cardOf(Suit.Spades, Value.FOUR),
-                cardOf(Suit.Clubs, Value.FOUR),
-                cardOf(Suit.Diamonds, Value.TWO),
-                cardOf(Suit.Hearts, Value.FOUR)
-        );
+        Player player1 = new Player(PLAYER1, pokerHandFullHouse());
         Player player2 = playerWithHandOf(PLAYER2,
                 cardOf(Suit.Spades, Value.TWO),
                 cardOf(Suit.Spades, Value.EIGHT),
@@ -53,4 +41,18 @@ public class PokerGameTest {
         );
         assertEquals("player1 wins. - with full house: 4 over 2", pokerGame.play(player1,player2));
     }
+    @Test
+    void win_the_game_with_Pair_rule(){
+        Player player1 = new Player(PLAYER1, pokerHandOnePair());
+        Player player2 = playerWithHandOf(PLAYER2,
+                cardOf(Suit.Spades, Value.TWO),
+                cardOf(Suit.Spades, Value.THREE),
+                cardOf(Suit.Spades, Value.FOUR),
+                cardOf(Suit.Spades, Value.EIGHT),
+                cardOf(Suit.Hearts, Value.KING)
+        );
+        assertEquals("player1 wins. - with pair: 2", pokerGame.play(player1,player2));
+    }
+
+    //TODO all other case, at least one case by pokerRule
 }

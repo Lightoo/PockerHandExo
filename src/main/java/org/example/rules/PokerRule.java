@@ -7,4 +7,5 @@ public interface PokerRule {
 
     boolean isTheRuleApplicable(PokerHand pokerHand);
     Score getScore(PokerHand pokerHand);
+    int getPriority();
 }

@@ -10,6 +10,6 @@ public class PokerHand {
     }
 
     public Card getStrongestCard(){
-        return null;
+        return cards.stream().max(Card::compareTo).get();
     }
 }

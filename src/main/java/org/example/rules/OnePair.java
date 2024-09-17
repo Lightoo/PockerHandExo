@@ -13,4 +13,9 @@ public class OnePair implements PokerRule{
     public Score getScore(PokerHand pokerHand) {
         return null;
     }
+
+    @Override
+    public int getPriority() {
+        return 2;
+    }
 }

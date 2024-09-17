@@ -3,7 +3,7 @@ package org.example.rules;
 import org.example.PokerHand;
 import org.example.Score;
 
-public class ThreeOfKinf implements PokerRule{
+public class ThreeOfKind implements PokerRule{
     @Override
     public boolean isTheRuleApplicable(PokerHand pokerHand) {
         return false;
@@ -12,5 +12,10 @@ public class ThreeOfKinf implements PokerRule{
     @Override
     public Score getScore(PokerHand pokerHand) {
         return null;
+    }
+
+    @Override
+    public int getPriority() {
+        return 4;
     }
 }

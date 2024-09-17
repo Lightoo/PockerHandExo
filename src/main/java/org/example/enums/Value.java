@@ -18,6 +18,9 @@ public enum Value {
 
     private final Integer priority;
 
+    public Integer getPriority() {
+        return priority;
+    }
     Value(Integer priority) {
         this.priority = priority;
     }
